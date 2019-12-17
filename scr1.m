@@ -1,0 +1,12 @@
+M=250;
+palette = randi([0 255],M,3);
+y=imread('parot.tif');
+N1 = size(y,1);
+N2 = size(y,2);
+lambda = 500;
+K=4;
+mu=1;
+w = calculaW(palette, y);
+segmented = imageSeg(w,K,lambda,M,N1,N2,mu);
+mapping = imagen(segmented, palette);
+imwrite(mapping/255, 'segmented.tif');
